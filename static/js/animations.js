@@ -1,85 +1,44 @@
 /**
- * static/js/animations.js
- * Animations Scroll Reveal pour toutes les sections.
+ * static/js/animations.js - Version Optimisée
  */
-alert()
-$(document).ready(function() {
+window.addEventListener('load', () => { // On attend que TOUT soit chargé (images incluses)
 
-    /* Injection des styles d'animation */
-    $('<style>').text(`
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    `).appendTo('head');
+    // 1. Préparation des classes (évite les bugs de délai)
+    const targets = [
+        { sel: '.sec-label, h2.sec-title, .proj, .sk-card', cls: 'reveal' },
+        { sel: '.about-text, .bio-content', cls: 'reveal-left' },
+        { sel: '.timeline, .contact-form-wrap', cls: 'reveal-right' }
+    ];
 
-    /* Application des classes d'animation */
-    $('.sec-label, h2.sec-title, .inner-title').addClass('reveal');
-    $('.inner-subtitle').addClass('reveal');
-
-    $('.tl-item').each(function(i) {
-        $(this).addClass('reveal').css('transition-delay', (i * 0.12) + 's');
+    targets.forEach(t => {
+        document.querySelectorAll(t.sel).forEach(el => el.classList.add(t.cls));
     });
 
-    $('.sk-card, .service-card-extended').each(function(i) {
-        $(this).addClass('reveal').css('transition-delay', (i * 0.1) + 's');
-    });
+    // 2. Intersection Observer (Le moteur d'animation)
+    const revealOption = {
+        threshold: 0.1, // Déclenche plus tôt
+        rootMargin: "0px 0px -50px 0px" // Zone de détection
+    };
 
-    $('.proj').each(function(i) {
-        $(this).addClass('reveal').css('transition-delay', (i * 0.1) + 's');
-    });
-
-    $('.process-step').each(function(i) {
-        $(this).addClass('reveal').css('transition-delay', (i * 0.12) + 's');
-    });
-
-    $('.skill-bar-item').each(function(i) {
-        $(this).addClass('reveal').css('transition-delay', (i * 0.1) + 's');
-    });
-
-    $('.about-text, .contact-info, .bio-content').addClass('reveal-left');
-    $('.timeline, .timeline-full, .contact-form-wrap').addClass('reveal-right');
-    $('.contact-grid > div:first-child').addClass('reveal-left');
-    $('.contact-grid > div:last-child').addClass('reveal-right');
-
-    $('.stat').each(function(i) {
-        $(this).addClass('reveal').css('transition-delay', (i * 0.15) + 's');
-    });
-
-    /* Fonction de déclenchement */
-    function checkReveal() {
-        const windowBottom = $(window).scrollTop() + $(window).height() * 0.92;
-        $('.reveal, .reveal-left, .reveal-right').each(function() {
-            if ($(this).offset().top < windowBottom) {
-                $(this).addClass('visible');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Animation unique
             }
         });
-    }
+    }, revealOption);
 
-    $(window).on('scroll.reveal', checkReveal);
-    checkReveal(); // Exécution immédiate pour les éléments déjà visibles
+    // 3. Lancement
+    const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    elements.forEach(el => observer.observe(el));
 
-}); // end document ready
+    // 4. SÉCURITÉ : Force l'affichage si l'élément est déjà dans l'écran au chargement
+    setTimeout(() => {
+        elements.forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight) {
+                el.classList.add('visible');
+            }
+        });
+    }, 500);
+});

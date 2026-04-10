@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     "apps.core",
     "apps.projects",
     "apps.contact",
-]
+] 
 
 # ─── Middlewares ────────────────────────────────────────────────────────────
 MIDDLEWARE = [
