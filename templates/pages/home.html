@@ -1,0 +1,305 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="hero-stripe" aria-hidden="true"></div>
+
+    <div class="here-presentation">
+        <div class="hero-eyebrow">
+            <div class="eyebrow-line"></div>
+            <span class="eyebrow-label" id="typewriter-target">Solutions Digitales · Abidjan</span>
+        </div>
+
+        <h1 class="hero-name">Bah Alpha<br>Oumar</h1>
+
+        <p class="hero-desc">
+            Étudiant et autodidacte, je me présente dans le monde du travail
+            pour apporter plus de solutions dans mon domaine.
+        </p>
+
+        <div class="hero-socials">
+            <a href="#" class="social-link" title="TikTok" aria-label="TikTok" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/alpha" class="social-link" title="GitHub" aria-label="GitHub" rel="noopener noreferrer" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="hero-btns">
+            <a href="{% url 'projects:list' %}" class="btn-fill">Voir mes réalisations →</a>
+            <a href="{% url 'contact:form' %}" class="btn-ghost">Me contacter</a>
+        </div>
+    </div>
+
+    <div class="hero-img" aria-hidden="false">
+        <div class="hero-img-wrap">
+            <img src="{% static 'images/alpha-photo.png' %}" alt="Photo de profil — Bah Alpha Oumar, développeur web" loading="eager">
+            <div class="img-corner tl"></div>
+            <div class="img-corner tr"></div>
+            <div class="img-corner bl"></div>
+            <div class="img-corner br"></div>
+            <div class="img-badge">
+                <div class="avail-dot" aria-hidden="true"></div>
+                Disponible
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ PARCOURS (aperçu) ══ -->
+<section class="bloc" id="about">
+    <div class="sec-label">01 — Parcours</div>
+    <h2 class="sec-title"><span class="wh">MON </span><span class="out">PARCOURS</span></h2>
+
+    <div class="about-grid">
+        <div class="about-text">
+            <p>Je suis <strong>Alpha</strong>, autodidacte passionné par le digital,
+            basé à <strong>Abidjan, CI</strong>. Depuis 2022, je construis des solutions
+            web adaptées aux besoins des particuliers et des entreprises.</p>
+
+            <p>Mon objectif : <strong>vous aider à exister et à briller en ligne</strong> —
+            du site vitrine au portfolio professionnel, en passant par l'e-commerce.</p>
+
+            <p>Ouvert aux collaborations locales et internationales.</p>
+
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-num" data-target="3" data-suffix="+">3+</div>
+                    <div class="stat-lbl">Années digital</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num" data-target="100" data-suffix="%">100%</div>
+                    <div class="stat-lbl">Autodidacte</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">∞</div>
+                    <div class="stat-lbl">Motivation</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="timeline">
+            {% if timeline %}
+                {% for entry in timeline %}
+                    <div class="tl-item {% if entry.is_active %}active{% endif %}">
+                        <span class="tl-year">{{ entry.years }}</span>
+                        <div>
+                            <div class="tl-title">{{ entry.title }}</div>
+                            <div class="tl-sub">{{ entry.description }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <!-- Données par défaut si la BDD est vide -->
+                <div class="tl-item">
+                    <span class="tl-year">2018–2025</span>
+                    <div>
+                        <div class="tl-title">Étudiant &amp; curieux</div>
+                        <div class="tl-sub">Apprentissage continu, passion pour la connaissance.</div>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <span class="tl-year">2022–2026</span>
+                    <div>
+                        <div class="tl-title">Autodidacte digital</div>
+                        <div class="tl-sub">Plongée dans le développement web et les outils du digital.</div>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <span class="tl-year">2024–2026</span>
+                    <div>
+                        <div class="tl-title">E-commerce</div>
+                        <div class="tl-sub">Création et gestion d'une boutique en ligne de A à Z.</div>
+                    </div>
+                </div>
+                <div class="tl-item active">
+                    <span class="tl-year">2026 →</span>
+                    <div>
+                        <div class="tl-title">Solutions digitales</div>
+                        <div class="tl-sub">Accompagnement de particuliers &amp; entreprises.</div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="section-cta">
+        <a href="{% url 'core:about' %}" class="btn-ghost">Voir tout mon parcours →</a>
+    </div>
+</section>
+
+<!-- ══ SERVICES (aperçu) ══ -->
+<div class="skills-wrap" id="skills">
+    <div class="skills-inner">
+        <div class="sec-label">02 — Services</div>
+        <h2 class="sec-title"><span class="wh">CE QUE </span><span class="out">JE FAIS</span></h2>
+
+        <div class="skills-grid">
+            {% if services %}
+                {% for service in services %}
+                    <div class="sk-card">
+                        <div class="sk-icon">{{ service.icon }}</div>
+                        <div class="sk-cat">{{ service.category }}</div>
+                        <div class="sk-name">{{ service.name }}</div>
+                        <div class="sk-tags">
+                            {% for tag in service.get_tags %}
+                                <span class="sk-tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="sk-card">
+                    <div class="sk-icon">◈</div>
+                    <div class="sk-cat">Web Design</div>
+                    <div class="sk-name">Sites Vitrines</div>
+                    <div class="sk-tags">
+                        <span class="sk-tag">Moderne</span>
+                        <span class="sk-tag">Responsive</span>
+                        <span class="sk-tag">Entreprises</span>
+                    </div>
+                </div>
+                <div class="sk-card">
+                    <div class="sk-icon">◇</div>
+                    <div class="sk-cat">Identité Digitale</div>
+                    <div class="sk-name">CV &amp; Portfolios</div>
+                    <div class="sk-tags">
+                        <span class="sk-tag">Personnalisation</span>
+                        <span class="sk-tag">Design pro</span>
+                    </div>
+                </div>
+                <div class="sk-card">
+                    <div class="sk-icon">○</div>
+                    <div class="sk-cat">Bureautique</div>
+                    <div class="sk-name">Suite Microsoft</div>
+                    <div class="sk-tags">
+                        <span class="sk-tag">Word</span>
+                        <span class="sk-tag">Excel</span>
+                        <span class="sk-tag">PowerPoint</span>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="section-cta">
+            <a href="{% url 'core:services' %}" class="btn-ghost">Voir tous mes services →</a>
+        </div>
+    </div>
+</div>
+
+<!-- ══ RÉALISATIONS (projets MASQUÉS sur home) ══ -->
+<section class="bloc" id="projects">
+    <div class="sec-label">03 — Réalisations</div>
+    <h2 class="sec-title"><span class="wh">MES </span><span class="out">PROJETS</span></h2>
+
+    <div class="projects-wrap">
+        {% if featured_projects %}
+            {% for project in featured_projects %}
+                <a href="{% url 'projects:single' project.slug %}" class="proj proj-masked" aria-label="Projet masqué — cliquer pour voir">
+                    <div class="pnum">0{{ forloop.counter }}</div>
+                    <div class="proj-info">
+                        <div class="ptitle">{{ project.title }}</div>
+                        <div class="pdesc">{{ project.description }}</div>
+                    </div>
+                    <div class="pmeta">
+                        <span class="ptype">{{ project.category }} · {{ project.year }}</span>
+                        <div class="pstack">
+                            {% for tech in project.get_stack_list %}
+                                <span class="ptag">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <span class="parrow" aria-hidden="true">↗</span>
+                    <!-- Overlay "Projet masqué" -->
+                    <div class="proj-overlay" aria-hidden="true">
+                        <span class="proj-hidden-label">Projet masqué</span>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <!-- Données par défaut -->
+            {% for item in "123"|make_list %}
+                <div class="proj proj-masked">
+                    <div class="pnum">0{{ forloop.counter }}</div>
+                    <div class="proj-info">
+                        <div class="ptitle">
+                            {% if forloop.counter == 1 %}Site Vitrine
+                            {% elif forloop.counter == 2 %}Boutique E-commerce
+                            {% else %}Portfolio Pro{% endif %}
+                        </div>
+                        <div class="pdesc">
+                            {% if forloop.counter == 1 %}Création d'un site vitrine moderne et responsive.
+                            {% elif forloop.counter == 2 %}Boutique en ligne complète de A à Z.
+                            {% else %}Design et personnalisation de portfolios professionnels.{% endif %}
+                        </div>
+                    </div>
+                    <div class="pmeta">
+                        <span class="ptype">
+                            {% if forloop.counter == 1 %}Web · 2025
+                            {% elif forloop.counter == 2 %}E-commerce · 2024
+                            {% else %}Portfolio · 2025{% endif %}
+                        </span>
+                        <div class="pstack">
+                            <span class="ptag">HTML</span>
+                            <span class="ptag">CSS</span>
+                        </div>
+                    </div>
+                    <span class="parrow" aria-hidden="true">↗</span>
+                    <div class="proj-overlay" aria-hidden="true">
+                        <span class="proj-hidden-label">Projet masqué</span>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="section-cta">
+        <a href="{% url 'projects:list' %}" class="btn-fill">Voir tous les projets →</a>
+    </div>
+</section>
+
+<!-- ══ CONTACT (aperçu) ══ -->
+<section class="bloc contact-section" id="contact">
+    <div class="sec-label">04 — Contact</div>
+    <div class="contact-grid">
+        <div class="contact-text">
+            <div class="ct-head">TRAVAILLONS<br>ENSEMBLE.</div>
+            <p class="ct-sub">
+                Vous avez un projet, une mission ou une idée à transformer en site web ?
+                Je suis toujours ouvert à discuter de nouvelles collaborations.
+            </p>
+            <div class="ct-links">
+                <a class="ct-link" href="mailto:bhaalpha4@gmail.com">
+                    <div class="ci">@</div>bhaalpha4@gmail.com
+                </a>
+                <a class="ct-link" href="#" rel="noopener noreferrer">
+                    <div class="ci">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M9 0h1.98c.144.715.54 1.617 1.235 2.512C12.895 3.389 13.797 4 15 4v2c-1.753 0-3.07-.814-4-1.829V11a5 5 0 1 1-5-5v2a3 3 0 1 0 3 3z"/>
+                        </svg>
+                    </div> TikTok · @alpha
+                </a>
+            </div>
+        </div>
+
+        <div class="contact-cta-box">
+            <p>Remplissez le formulaire complet pour me laisser un message.</p>
+            <a href="{% url 'contact:form' %}" class="btn-fill contact-cta-btn">Ouvrir le formulaire →</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

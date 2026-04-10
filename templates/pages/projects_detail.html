@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/projects.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="inner-page-hero">
+    <div class="inner-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span>03 — Réalisations</span>
+    </div>
+    <h1 class="inner-title">
+        <span class="wh">MES </span><span class="out">PROJETS</span>
+    </h1>
+    <p class="inner-subtitle">
+        Tous mes projets — ici, rien n'est masqué.
+    </p>
+    <a href="{% url 'core:home' %}#projects" class="btn-ghost btn-sm">← Retour à l'accueil</a>
+</div>
+
+<section class="inner-section">
+    <div class="inner-container">
+        <div class="projects-wrap">
+            {% if projects %}
+                {% for project in projects %}
+                    <a href="{% url 'projects:single' project.slug %}" class="proj proj-revealed">
+                        <div class="pnum">0{{ forloop.counter }}</div>
+                        <div class="proj-info">
+                            <div class="ptitle">{{ project.title }}</div>
+                            <div class="pdesc">{{ project.description }}</div>
+                        </div>
+                        <div class="pmeta">
+                            <span class="ptype">{{ project.category }} · {{ project.year }}</span>
+                            <div class="pstack">
+                                {% for tech in project.get_stack_list %}
+                                    <span class="ptag">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <span class="parrow" aria-hidden="true">↗</span>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <!-- Données par défaut -->
+                <div class="proj proj-revealed">
+                    <div class="pnum">01</div>
+                    <div class="proj-info">
+                        <div class="ptitle">Site Vitrine</div>
+                        <div class="pdesc">Création d'un site vitrine moderne et responsive pour une entreprise locale.</div>
+                    </div>
+                    <div class="pmeta">
+                        <span class="ptype">Web · 2025</span>
+                        <div class="pstack">
+                            <span class="ptag">HTML</span>
+                            <span class="ptag">CSS</span>
+                            <span class="ptag">JS</span>
+                        </div>
+                    </div>
+                    <span class="parrow" aria-hidden="true">↗</span>
+                </div>
+                <div class="proj proj-revealed">
+                    <div class="pnum">02</div>
+                    <div class="proj-info">
+                        <div class="ptitle">Boutique E-commerce</div>
+                        <div class="pdesc">Création et gestion d'une boutique en ligne complète de A à Z.</div>
+                    </div>
+                    <div class="pmeta">
+                        <span class="ptype">E-commerce · 2024</span>
+                        <div class="pstack">
+                            <span class="ptag">Shopify</span>
+                            <span class="ptag">Design</span>
+                        </div>
+                    </div>
+                    <span class="parrow" aria-hidden="true">↗</span>
+                </div>
+                <div class="proj proj-revealed">
+                    <div class="pnum">03</div>
+                    <div class="proj-info">
+                        <div class="ptitle">Portfolio Pro</div>
+                        <div class="pdesc">Design et personnalisation de portfolios professionnels sur mesure.</div>
+                    </div>
+                    <div class="pmeta">
+                        <span class="ptype">Portfolio · 2025</span>
+                        <div class="pstack">
+                            <span class="ptag">HTML</span>
+                            <span class="ptag">CSS</span>
+                            <span class="ptag">Django</span>
+                        </div>
+                    </div>
+                    <span class="parrow" aria-hidden="true">↗</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

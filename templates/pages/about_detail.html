@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="inner-page-hero">
+    <div class="inner-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span>01 — Parcours</span>
+    </div>
+    <h1 class="inner-title">
+        <span class="wh">MON </span><span class="out">PARCOURS</span>
+    </h1>
+    <p class="inner-subtitle">
+        De la curiosité à la création — mon histoire dans le digital.
+    </p>
+    <a href="{% url 'core:home' %}#about" class="btn-ghost btn-sm">← Retour à l'accueil</a>
+</div>
+
+<section class="inner-section">
+    <div class="inner-container">
+
+        <!-- Biographie étendue -->
+        <div class="about-bio-extended">
+            <div class="bio-card">
+                <div class="bio-avatar">
+                    <img src="{% static 'images/alpha-photo.png' %}" alt="Bah Alpha Oumar">
+                </div>
+                <div class="bio-content">
+                    <h2>Bah Alpha Oumar</h2>
+                    <p class="bio-role">Développeur Web &amp; Solutions Digitales · Abidjan, CI</p>
+                    <p>
+                        Depuis 2022, je me consacre au développement web avec une passion croissante
+                        pour créer des expériences numériques percutantes. Autodidacte dans l'âme,
+                        j'apprends constamment de nouvelles technologies et tendances pour rester à
+                        la pointe de l'industrie.
+                    </p>
+                    <p>
+                        Mon approche combine <strong>esthétique soignée</strong> et
+                        <strong>performance technique</strong> pour livrer des projets qui dépassent
+                        les attentes de mes clients.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistiques -->
+        <div class="stats stats-extended">
+            <div class="stat">
+                <div class="stat-num" data-target="3" data-suffix="+">3+</div>
+                <div class="stat-lbl">Années digital</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num" data-target="100" data-suffix="%">100%</div>
+                <div class="stat-lbl">Autodidacte</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num">∞</div>
+                <div class="stat-lbl">Motivation</div>
+            </div>
+            <div class="stat">
+                <div class="stat-num" data-target="5" data-suffix="+">5+</div>
+                <div class="stat-lbl">Projets livrés</div>
+            </div>
+        </div>
+
+        <!-- Timeline complète -->
+        <div class="timeline-full">
+            <h2 class="section-subtitle">Ma trajectoire</h2>
+            {% if timeline %}
+                {% for entry in timeline %}
+                    <div class="tl-item {% if entry.is_active %}active{% endif %}">
+                        <span class="tl-year">{{ entry.years }}</span>
+                        <div>
+                            <div class="tl-title">{{ entry.title }}</div>
+                            <div class="tl-sub">{{ entry.description }}</div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="tl-item">
+                    <span class="tl-year">2018–2025</span>
+                    <div>
+                        <div class="tl-title">Étudiant &amp; curieux</div>
+                        <div class="tl-sub">Apprentissage continu, passion pour la connaissance et la recherche.</div>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <span class="tl-year">2022–2026</span>
+                    <div>
+                        <div class="tl-title">Autodidacte digital</div>
+                        <div class="tl-sub">Plongée dans le développement web : HTML, CSS, JavaScript, Python.</div>
+                    </div>
+                </div>
+                <div class="tl-item">
+                    <span class="tl-year">2024–2026</span>
+                    <div>
+                        <div class="tl-title">E-commerce</div>
+                        <div class="tl-sub">Création et gestion d'une boutique en ligne de A à Z.</div>
+                    </div>
+                </div>
+                <div class="tl-item active">
+                    <span class="tl-year">2026 →</span>
+                    <div>
+                        <div class="tl-title">Solutions digitales</div>
+                        <div class="tl-sub">Accompagnement de particuliers &amp; entreprises vers leurs objectifs en ligne.</div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Compétences techniques -->
+        <div class="skills-section">
+            <h2 class="section-subtitle">Compétences techniques</h2>
+            <div class="skills-bars">
+                <div class="skill-bar-item">
+                    <div class="skill-bar-header">
+                        <span>HTML / CSS</span><span>90%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill" data-width="90"></div>
+                    </div>
+                </div>
+                <div class="skill-bar-item">
+                    <div class="skill-bar-header">
+                        <span>JavaScript</span><span>75%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill" data-width="75"></div>
+                    </div>
+                </div>
+                <div class="skill-bar-item">
+                    <div class="skill-bar-header">
+                        <span>Python / Django</span><span>70%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill" data-width="70"></div>
+                    </div>
+                </div>
+                <div class="skill-bar-item">
+                    <div class="skill-bar-header">
+                        <span>Suite Microsoft Office</span><span>95%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill" data-width="95"></div>
+                    </div>
+                </div>
+                <div class="skill-bar-item">
+                    <div class="skill-bar-header">
+                        <span>E-commerce (Shopify)</span><span>80%</span>
+                    </div>
+                    <div class="skill-bar-track">
+                        <div class="skill-bar-fill" data-width="80"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-page-cta">
+            <a href="{% url 'contact:form' %}" class="btn-fill">Travaillons ensemble →</a>
+            <a href="{% url 'projects:list' %}" class="btn-ghost">Voir mes projets</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

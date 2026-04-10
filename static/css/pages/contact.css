@@ -1,0 +1,17 @@
+/*
+ * static/css/pages/contact.css
+ * Styles spécifiques à la page contact complète.
+ */
+
+.contact-info { padding-right: 1rem; }
+.contact-form-wrap {}
+
+/* Surcharge form pour la page contact complète */
+.contact-form-wrap .fg input,
+.contact-form-wrap .fg textarea {
+    background: var(--second3);
+}
+
+@media (max-width: 768px) {
+    .contact-info { padding-right: 0; }
+}

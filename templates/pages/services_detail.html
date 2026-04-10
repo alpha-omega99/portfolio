@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="inner-page-hero">
+    <div class="inner-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span>02 — Services</span>
+    </div>
+    <h1 class="inner-title">
+        <span class="wh">CE QUE </span><span class="out">JE FAIS</span>
+    </h1>
+    <p class="inner-subtitle">
+        Des solutions digitales sur-mesure pour votre présence en ligne.
+    </p>
+    <a href="{% url 'core:home' %}#skills" class="btn-ghost btn-sm">← Retour à l'accueil</a>
+</div>
+
+<section class="inner-section">
+    <div class="inner-container">
+
+        <div class="services-extended-grid">
+            {% if services %}
+                {% for service in services %}
+                    <div class="service-card-extended">
+                        <div class="sk-icon sk-icon-lg">{{ service.icon }}</div>
+                        <div class="sk-cat">{{ service.category }}</div>
+                        <h2 class="sk-name sk-name-lg">{{ service.name }}</h2>
+                        {% if service.description %}
+                            <p class="sk-desc">{{ service.description }}</p>
+                        {% endif %}
+                        <div class="sk-tags">
+                            {% for tag in service.get_tags %}
+                                <span class="sk-tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <!-- Données par défaut -->
+                <div class="service-card-extended">
+                    <div class="sk-icon sk-icon-lg">◈</div>
+                    <div class="sk-cat">Web Design</div>
+                    <h2 class="sk-name sk-name-lg">Sites Vitrines</h2>
+                    <p class="sk-desc">
+                        Création de sites vitrines modernes, rapides et responsive pour mettre en valeur
+                        votre activité. Chaque site est conçu sur-mesure avec une attention particulière
+                        à l'expérience utilisateur.
+                    </p>
+                    <div class="sk-tags">
+                        <span class="sk-tag">Moderne</span>
+                        <span class="sk-tag">Responsive</span>
+                        <span class="sk-tag">Entreprises</span>
+                        <span class="sk-tag">Particuliers</span>
+                    </div>
+                </div>
+                <div class="service-card-extended">
+                    <div class="sk-icon sk-icon-lg">◇</div>
+                    <div class="sk-cat">Identité Digitale</div>
+                    <h2 class="sk-name sk-name-lg">CV &amp; Portfolios</h2>
+                    <p class="sk-desc">
+                        Valorisez votre profil professionnel avec un portfolio ou CV en ligne percutant.
+                        Design soigné, contenu bien structuré pour maximiser vos chances.
+                    </p>
+                    <div class="sk-tags">
+                        <span class="sk-tag">Personnalisation</span>
+                        <span class="sk-tag">Design pro</span>
+                        <span class="sk-tag">Mise en valeur</span>
+                    </div>
+                </div>
+                <div class="service-card-extended">
+                    <div class="sk-icon sk-icon-lg">○</div>
+                    <div class="sk-cat">Bureautique</div>
+                    <h2 class="sk-name sk-name-lg">Suite Microsoft</h2>
+                    <p class="sk-desc">
+                        Maîtrise avancée de la Suite Microsoft Office pour la création de documents
+                        professionnels, tableurs et présentations impactantes.
+                    </p>
+                    <div class="sk-tags">
+                        <span class="sk-tag">Word</span>
+                        <span class="sk-tag">Excel</span>
+                        <span class="sk-tag">PowerPoint</span>
+                    </div>
+                </div>
+                <div class="service-card-extended">
+                    <div class="sk-icon sk-icon-lg">▣</div>
+                    <div class="sk-cat">E-commerce</div>
+                    <h2 class="sk-name sk-name-lg">Boutiques en ligne</h2>
+                    <p class="sk-desc">
+                        Création et gestion complète de boutiques e-commerce — de la conception
+                        au lancement, avec intégration de paiements et optimisation des conversions.
+                    </p>
+                    <div class="sk-tags">
+                        <span class="sk-tag">Shopify</span>
+                        <span class="sk-tag">WooCommerce</span>
+                        <span class="sk-tag">Gestion produits</span>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Process de travail -->
+        <div class="process-section">
+            <h2 class="section-subtitle">Mon processus de travail</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <div class="step-title">Discussion &amp; Brief</div>
+                        <div class="step-desc">On discute de votre projet, vos objectifs et vos besoins.</div>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">02</div>
+                    <div class="step-content">
+                        <div class="step-title">Design &amp; Maquette</div>
+                        <div class="step-desc">Je crée une maquette visuelle pour valider la direction.</div>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">03</div>
+                    <div class="step-content">
+                        <div class="step-title">Développement</div>
+                        <div class="step-desc">Intégration avec un code propre, rapide et sécurisé.</div>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="step-num">04</div>
+                    <div class="step-content">
+                        <div class="step-title">Livraison &amp; Suivi</div>
+                        <div class="step-desc">Mise en ligne et accompagnement après livraison.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="inner-page-cta">
+            <a href="{% url 'contact:form' %}" class="btn-fill">Démarrer un projet →</a>
+        </div>
+    </div>
+</section>
+{% endblock %}

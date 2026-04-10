@@ -1,0 +1,40 @@
+{% load static %}
+<!-- ══ HEADER ══ -->
+<header id="site-header">
+    <a href="{% url 'core:home' %}" class="logo" aria-label="Alpha — Accueil">
+        <span>&lt;</span>Alpha<span>/&gt;</span>
+    </a>
+
+    <!-- Navigation desktop -->
+    <nav class="nav-bar" id="nav-bar" aria-label="Navigation principale">
+        <ul>
+            <li><a href="{% url 'core:home' %}#hero">Accueil</a></li>
+            <li><a href="{% url 'core:about' %}">Parcours</a></li>
+            <li><a href="{% url 'core:services' %}">Services</a></li>
+            <li><a href="{% url 'projects:list' %}">Réalisations</a></li>
+            <li><a href="{% url 'contact:form' %}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <a href="{% url 'contact:form' %}" class="btn header-cta">Contactez-moi</a>
+
+    <!-- Burger menu mobile -->
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<!-- ══ MENU MOBILE ══ -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Menu mobile">
+        <ul>
+            <li><a href="{% url 'core:home' %}#hero" class="mobile-link">Accueil</a></li>
+            <li><a href="{% url 'core:about' %}" class="mobile-link">Parcours</a></li>
+            <li><a href="{% url 'core:services' %}" class="mobile-link">Services</a></li>
+            <li><a href="{% url 'projects:list' %}" class="mobile-link">Réalisations</a></li>
+            <li><a href="{% url 'contact:form' %}" class="mobile-link">Contact</a></li>
+        </ul>
+    </nav>
+</div>

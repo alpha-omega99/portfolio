@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alpha — Développeur web & Solutions Digitales, Abidjan CI">
+    <meta name="author" content="Bah Alpha Oumar">
+
+    <!-- Sécurité : Content-Security-Policy via meta (renforcé côté serveur dans production) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <title>{% block title %}{{ page_title|default:"Alpha — Portfolio" }}{% endblock %}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    {% include "partials/_header.html" %}
+
+    <!-- Contenu principal -->
+    <main id="main-content">
+        {% if messages %}
+            <div class="messages-wrapper" aria-live="polite">
+                {% for message in messages %}
+                    <div class="flash-msg flash-{{ message.tags }}">
+                        {{ message }}
+                        <button class="flash-close" aria-label="Fermer">✕</button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include "partials/_footer.html" %}
+
+    <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/animations.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

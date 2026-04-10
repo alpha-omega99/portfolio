@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/projects.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="inner-page-hero">
+    <div class="inner-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span>Réalisation</span>
+    </div>
+    <h1 class="inner-title">
+        <span class="out">{{ project.title }}</span>
+    </h1>
+    <a href="{% url 'projects:list' %}" class="btn-ghost btn-sm">← Tous les projets</a>
+</div>
+
+<section class="inner-section">
+    <div class="inner-container">
+        <div class="project-single-grid">
+            <div class="project-main">
+                <div class="project-meta-bar">
+                    <span class="ptype">{{ project.category }} · {{ project.year }}</span>
+                    <div class="pstack">
+                        {% for tech in project.get_stack_list %}
+                            <span class="ptag">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="project-description">
+                    <h2>À propos de ce projet</h2>
+                    <p>{{ project.description }}</p>
+                    {% if project.long_description %}
+                        <p>{{ project.long_description }}</p>
+                    {% endif %}
+                </div>
+
+                {% if project.url %}
+                    <a href="{{ project.url }}" class="btn-fill" target="_blank" rel="noopener noreferrer">
+                        Voir le projet en ligne ↗
+                    </a>
+                {% endif %}
+            </div>
+
+            {% if other_projects %}
+                <div class="project-sidebar">
+                    <h3 class="sidebar-title">Autres projets</h3>
+                    <div class="sidebar-projects">
+                        {% for other in other_projects %}
+                            <a href="{% url 'projects:single' other.slug %}" class="sidebar-proj">
+                                <span class="sidebar-proj-title">{{ other.title }}</span>
+                                <span class="sidebar-proj-cat">{{ other.category }}</span>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

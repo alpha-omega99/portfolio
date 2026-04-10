@@ -1,0 +1,221 @@
+/*
+ * static/css/base.css
+ * Reset global, variables CSS et styles fondamentaux.
+ */
+
+
+/* ══════════════════════
+   VARIABLES
+══════════════════════ */
+
+:root {
+    --primary: #000000;
+    --second: #0B1629;
+    --second2: #0F1E38;
+    --second3: #162540;
+    --accent: #2D6BE4;
+    --accent2: #1E4DA1;
+    --trois: #FFFFFF;
+    --muted: #8A9BB8;
+    --green: #22C55E;
+    --red: #EF4444;
+    --border: rgba(255, 255, 255, 0.08);
+    --display: 'Bebas Neue', sans-serif;
+    --body: 'DM Sans', sans-serif;
+    --radius: 4px;
+    --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+
+/* ══════════════════════
+   RESET
+══════════════════════ */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background: var(--second);
+    color: var(--trois);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+button {
+    font-family: var(--body);
+    cursor: pointer;
+}
+
+
+/* ══════════════════════
+    UTILITAIRES
+══════════════════════ */
+
+.wh {
+    color: var(--trois);
+}
+
+.out {
+    -webkit-text-stroke: 1.5px var(--trois);
+    color: transparent;
+}
+
+
+/* Sections internes communes */
+
+.sec-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+h2.sec-title {
+    font-family: var(--display);
+    font-size: clamp(2.8rem, 5vw, 4.5rem);
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    line-height: 1;
+}
+
+.bloc {
+    padding: 7rem 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+/* Lien CTA sous chaque section */
+
+.section-cta {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+
+/* Messages flash */
+
+.messages-wrapper {
+    position: fixed;
+    top: 90px;
+    right: 1.5rem;
+    z-index: 500;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-width: 400px;
+}
+
+.flash-msg {
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.flash-success {
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: var(--green);
+}
+
+.flash-error {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: var(--red);
+}
+
+.flash-close {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 14px;
+    opacity: 0.7;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.flash-close:hover {
+    opacity: 1;
+}
+
+
+/* Succès contact */
+
+.success-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.12);
+    border: 2px solid var(--green);
+    color: var(--green);
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+}
+
+
+/* ══════════════════════
+    RESPONSIVE
+══════════════════════ */
+
+@media (max-width: 768px) {
+    .bloc {
+        padding: 5rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bloc {
+        padding: 4rem 1rem;
+    }
+}
