@@ -11,6 +11,7 @@ window.addEventListener('load', () => { // On attend que TOUT soit chargé (imag
     ];
 
     targets.forEach(t => {
+
         document.querySelectorAll(t.sel).forEach(el => el.classList.add(t.cls));
     });
 

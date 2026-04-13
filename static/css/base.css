@@ -61,7 +61,6 @@ body {
 
 #site-header.scrolled {
     background-color: rgba(11, 22, 41, 0.95);
-    /* Couleur sombre transparente */
     backdrop-filter: blur(10px);
     padding: 10px 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -70,6 +69,9 @@ body {
 
 /* Custom Cursor Styles */
 
+
+/* ── CURSEUR ── */
+
 #cursor {
     position: fixed;
     width: 40px;
@@ -77,15 +79,21 @@ body {
     border: 2px solid rgba(45, 107, 228, 0.6);
     border-radius: 50%;
     pointer-events: none;
-    transform: translate(-50%, -50%);
     z-index: 10000;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transform: translate(-50%, -50%);
+    transition: width .2s ease, height .2s ease, border-color .2s ease, background-color .2s ease, opacity .2s ease;
+    opacity: 0;
+}
+
+#cursor.visible {
+    opacity: 1;
 }
 
 #cursor.hover {
-    transform: translate(-50%, -50%) scale(1.8);
+    width: 72px;
+    height: 72px;
     border-color: rgba(45, 107, 228, 0.9);
-    background-color: rgba(45, 107, 228, 0.05);
+    background-color: rgba(45, 107, 228, 0.08);
 }
 
 #cursor-dot {
@@ -95,8 +103,14 @@ body {
     background: #2D6BE4;
     border-radius: 50%;
     pointer-events: none;
-    transform: translate(-50%, -50%);
     z-index: 10001;
+    transform: translate(-50%, -50%);
+    transition: opacity .2s ease;
+    opacity: 0;
+}
+
+#cursor-dot.visible {
+    opacity: 1;
 }
 
 img {

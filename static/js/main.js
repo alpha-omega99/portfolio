@@ -1,59 +1,59 @@
 /**
- * static/js/main.js - Version Vanilla JS Robuste
+ * static/js/main.js - Vanilla JS
  */
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. LOADER (Simplifié pour éviter les blocages)
-    const loader = document.getElementById('loader') || document.createElement('div');
-    if (!document.getElementById('loader')) {
-        loader.id = 'loader';
-        loader.innerHTML = '<div class="loader-inner"><div class="loader-bar-wrap"><div class="loader-bar"></div></div><div class="loader-pct">0%</div></div>';
-        document.body.prepend(loader);
-    }
-
-    let pct = 0;
-    const bar = loader.querySelector('.loader-bar');
-    const txt = loader.querySelector('.loader-pct');
-
-    const loadInt = setInterval(() => {
-        pct += Math.floor(Math.random() * 15);
-        if (pct >= 100) {
-            pct = 100;
-            clearInterval(loadInt);
-            setTimeout(() => {
-                loader.style.opacity = '0';
-                setTimeout(() => loader.remove(), 600);
-            }, 200);
-        }
-        if (bar) bar.style.width = pct + '%';
-        if (txt) txt.textContent = pct + '%';
-    }, 50);
-
-    // 2. MENU BURGER
+    // --- BURGER MENU ---
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
-
     if (burger && mobileMenu) {
         burger.addEventListener('click', () => {
-            const open = burger.classList.toggle('open');
-            mobileMenu.classList.toggle('open', open);
-            document.body.style.overflow = open ? 'hidden' : '';
+            burger.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
         });
     }
 
-    // 3. CURSEUR (Plus fluide)
+    // --- SMOOTH SCROLL ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // --- CURSEUR ---
     if (window.matchMedia('(hover: hover)').matches) {
-        const cursor = document.createElement('div');
-        cursor.id = 'cursor';
-        document.body.append(cursor);
+        const cursor = document.getElementById('cursor');
+        const cursorDot = document.getElementById('cursor-dot');
 
         document.addEventListener('mousemove', (e) => {
-            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
         });
 
-        document.querySelectorAll('a, button, .proj').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        document.addEventListener('mouseenter', () => {
+            cursor.classList.add('visible');
+            cursorDot.classList.add('visible');
+        });
+        document.addEventListener('mouseleave', () => {
+            cursor.classList.remove('visible');
+            cursorDot.classList.remove('visible');
+        });
+
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a, button, .proj')) cursor.classList.add('hover');
+        });
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.closest('a, button, .proj')) cursor.classList.remove('hover');
         });
     }
 });
