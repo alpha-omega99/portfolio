@@ -3,7 +3,9 @@
  * Styles pour les pages Parcours et Services.
  */
 
+
 /* Bio card */
+
 .bio-card {
     display: grid;
     grid-template-columns: 180px 1fr;
@@ -47,9 +49,50 @@
     margin-bottom: 0.8rem;
 }
 
-.bio-content p strong { color: var(--trois); }
+.bio-content p strong {
+    color: var(--trois);
+}
+
+
+/* Stats */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    margin-top: 2.5rem;
+}
+
+.stats-extended {
+    grid-template-columns: repeat(4, 1fr);
+    margin: 3rem 0;
+}
+
+.stat {
+    background: var(--second);
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+.stat-num {
+    font-family: var(--display);
+    font-size: 3rem;
+    letter-spacing: 2px;
+    color: var(--accent);
+}
+
+.stat-lbl {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.3rem;
+}
+
 
 /* Skill bars */
+
 .skills-bars {
     display: flex;
     flex-direction: column;
@@ -82,7 +125,9 @@
     transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+
 /* Services extended */
+
 .services-extended-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -97,9 +142,13 @@
     transition: background 0.2s;
 }
 
-.service-card-extended:hover { background: var(--second3); }
+.service-card-extended:hover {
+    background: var(--second3);
+}
+
 
 /* Process steps */
+
 .process-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -113,7 +162,9 @@
     transition: background 0.2s;
 }
 
-.process-step:hover { background: var(--second3); }
+.process-step:hover {
+    background: var(--second3);
+}
 
 .step-num {
     font-family: var(--display);
@@ -130,11 +181,16 @@
     margin-bottom: 0.4rem;
 }
 
-.step-desc { font-size: 13px; color: var(--muted); }
+.step-desc {
+    font-size: 13px;
+    color: var(--muted);
+}
+
 
 /* ══════════════════════
    RESPONSIVE
 ══════════════════════ */
+
 @media (max-width: 768px) {
     .bio-card {
         grid-template-columns: 1fr;
@@ -143,11 +199,19 @@
         width: 140px;
         height: 170px;
     }
-    .services-extended-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .services-extended-grid {
+        grid-template-columns: 1fr;
+    }
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 480px) {
-    .process-steps { grid-template-columns: 1fr; }
-    .stats-extended { grid-template-columns: repeat(2, 1fr); }
+    .process-steps {
+        grid-template-columns: 1fr;
+    }
+    .stats-extended {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }

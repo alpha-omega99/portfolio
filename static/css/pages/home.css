@@ -3,9 +3,11 @@
  * Styles spécifiques à la page d'accueil.
  */
 
+
 /* ══════════════════════
    HERO
 ══════════════════════ */
+
 .hero {
     min-height: 100vh;
     display: flex;
@@ -21,18 +23,14 @@
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(ellipse 70% 60% at 60% 50%, rgba(45, 107, 228, 0.13) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(30, 77, 161, 0.12) 0%, transparent 50%);
+    background: radial-gradient(ellipse 70% 60% at 60% 50%, rgba(45, 107, 228, 0.13) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 10% 80%, rgba(30, 77, 161, 0.12) 0%, transparent 50%);
     pointer-events: none;
 }
 
 .hero-grid-bg {
     position: absolute;
     inset: 0;
-    background-image:
-        linear-gradient(rgba(45, 107, 228, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(45, 107, 228, 0.04) 1px, transparent 1px);
+    background-image: linear-gradient(rgba(45, 107, 228, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(45, 107, 228, 0.04) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
 }
@@ -125,7 +123,9 @@
     flex-wrap: wrap;
 }
 
+
 /* ── IMAGE HERO ── */
+
 .hero-img {
     position: relative;
     z-index: 1;
@@ -150,9 +150,13 @@
     transition: filter 0.4s;
 }
 
-.hero-img-wrap:hover img { filter: grayscale(0%); }
+.hero-img-wrap:hover img {
+    filter: grayscale(0%);
+}
+
 
 /* Coins décoratifs */
+
 .img-corner {
     position: absolute;
     width: 22px;
@@ -161,10 +165,29 @@
     border-style: solid;
 }
 
-.img-corner.tl { top: -3px;    left: -3px;  border-width: 3px 0 0 3px; }
-.img-corner.tr { top: -3px;    right: -3px; border-width: 3px 3px 0 0; }
-.img-corner.bl { bottom: -3px; left: -3px;  border-width: 0 0 3px 3px; }
-.img-corner.br { bottom: -3px; right: -3px; border-width: 0 3px 3px 0; }
+.img-corner.tl {
+    top: -3px;
+    left: -3px;
+    border-width: 3px 0 0 3px;
+}
+
+.img-corner.tr {
+    top: -3px;
+    right: -3px;
+    border-width: 3px 3px 0 0;
+}
+
+.img-corner.bl {
+    bottom: -3px;
+    left: -3px;
+    border-width: 0 0 3px 3px;
+}
+
+.img-corner.br {
+    bottom: -3px;
+    right: -3px;
+    border-width: 0 3px 3px 0;
+}
 
 .img-badge {
     position: absolute;
@@ -189,13 +212,20 @@
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: .3; }
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: .3;
+    }
 }
 
+
 /* ══════════════════════
-   ABOUT HOME
+    ABOUT HOME
 ══════════════════════ */
+
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -209,9 +239,13 @@
     line-height: 1.9;
 }
 
-.about-text p strong { color: var(--trois); }
+.about-text p strong {
+    color: var(--trois);
+}
+
 
 /* Stats */
+
 .stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -246,12 +280,18 @@
     margin-top: 0.3rem;
 }
 
+
 /* ══════════════════════
    RESPONSIVE HOME
 ══════════════════════ */
+
 @media (max-width: 1024px) {
-    .hero { padding: 8rem 2rem 4rem; }
-    .about-grid { gap: 3rem; }
+    .hero {
+        padding: 8rem 2rem 4rem;
+    }
+    .about-grid {
+        gap: 3rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -260,20 +300,48 @@
         padding: 7rem 1.5rem 3rem;
         text-align: center;
     }
-    .hero-eyebrow  { justify-content: center; }
-    .hero-desc     { margin: 0 auto 2rem; }
-    .hero-socials  { justify-content: center; }
-    .hero-btns     { justify-content: center; }
-    .hero-stripe   { display: none; }
-    .hero-img-wrap { width: 260px; height: 300px; }
-    .about-grid    { grid-template-columns: 1fr; gap: 2rem; }
-    .stats         { grid-template-columns: repeat(3, 1fr); }
-    .stats-extended{ grid-template-columns: repeat(2, 1fr); }
+    .hero-eyebrow {
+        justify-content: center;
+    }
+    .hero-desc {
+        margin: 0 auto 2rem;
+    }
+    .hero-socials {
+        justify-content: center;
+    }
+    .hero-btns {
+        justify-content: center;
+    }
+    .hero-stripe {
+        display: none;
+    }
+    .hero-img-wrap {
+        width: 260px;
+        height: 300px;
+    }
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .stats {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .stats-extended {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 480px) {
-    .hero         { padding: 6rem 1rem 3rem; }
-    .hero-name    { font-size: 3.5rem; }
-    .skills-inner { padding: 4rem 1rem; }
-    .stats        { grid-template-columns: 1fr 1fr; }
+    .hero {
+        padding: 6rem 1rem 3rem;
+    }
+    .hero-name {
+        font-size: 3.5rem;
+    }
+    .skills-inner {
+        padding: 4rem 1rem;
+    }
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
 }
