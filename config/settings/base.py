@@ -64,11 +64,22 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 # ─── Base de données ────────────────────────────────────────────────────────
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    "default":{
+        "ENGINE":"django.db.backends.mysql",
+        "NAME":"portfolio_db",
+        "USER":"Alpha",
+        "PASSWORD": "Homme224$0586838902",
+        "HOST": "127.0.0.1",
+        "PORT": "3306",
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # ─── Internationalisation ───────────────────────────────────────────────────
 LANGUAGE_CODE = "fr-fr"
