@@ -7,11 +7,15 @@ from decouple import config
 import dj_database_url
 # ─── Chemins ───────────────────────────────────────────────────────────────
 <<<<<<< HEAD
+<<<<<<< HEAD
 BASE_DIR =Path(__file__).resolve().parent.parent.parent
 =======
 BASE_DIR = Path
 (__file__).resolve().parent.parent.parent
 >>>>>>> e4c88f2 (pret pour le deployement)
+=======
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
+>>>>>>> 664c453 (pret pour le deployement)
 
 # ─── Sécurité ──────────────────────────────────────────────────────────────
 SECRET_KEY = config("SECRET_KEY")
