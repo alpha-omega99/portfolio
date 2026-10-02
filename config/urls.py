@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # Admin Django
-    path("admin/", admin.site.urls),
+    path("gestion-x7k2/", admin.site.urls),
 
     # Pages principales (core)
     path("", include("apps.core.urls")),
