@@ -2,7 +2,8 @@
 config/settings/development.py
 Settings pour le développement local.
 """
-from .base import *  # noqa: F401, F403
+from .base import *  
+# noqa: F401, F403
 from decouple import config
 
 DEBUG = True

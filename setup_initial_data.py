@@ -88,4 +88,4 @@ for p in projects:
 print(f"  ✓ {len(projects)} projets créés")
 
 print("\n✅ Données initiales chargées avec succès !")
-print("   Démarrez le serveur : python manage.py runserver")
+print("   Démarrez le serveur")

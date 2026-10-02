@@ -6,4 +6,8 @@ db.sqlite3
 *.log
 staticfiles/
 .DS_Store
+<<<<<<< HEAD
 .idea/
+=======
+.idea/
+>>>>>>> e4c88f2 (pret pour le deployement)
