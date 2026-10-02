@@ -2,12 +2,11 @@
 config/settings/base.py
 Settings communs à tous les environnements.
 """
-from email.policy import default
 from pathlib import Path
 from decouple import config
 import dj_database_url
 # ─── Chemins ───────────────────────────────────────────────────────────────
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR =Path(__file__).resolve().parent.parent.parent
 
 # ─── Sécurité ──────────────────────────────────────────────────────────────
 SECRET_KEY = config("SECRET_KEY")
